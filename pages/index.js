@@ -8,7 +8,7 @@ import { toast } from "react-hot-toast";
 export default function Home() {
   const [message, setMessage] = useState("");
   const [ip, setIp] = useState(null);
-  const [state, setState] = useState(1);
+  const [state, setState] = useState(0);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
