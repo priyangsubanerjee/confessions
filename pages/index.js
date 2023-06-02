@@ -8,7 +8,7 @@ import { toast } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [state, setState] = useState(null);
+  const [state, setState] = useState(0);
 
   return (
     <main>
@@ -18,10 +18,7 @@ export default function Home() {
             Wanna confess something to me?
           </h1>
 
-          <p
-            onClick={() => setState(0)}
-            className="text-center font-jost mt-10 flex items-center justify-center space-x-3"
-          >
+          <p className="text-center font-jost mt-10 flex items-center justify-center space-x-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -37,124 +34,96 @@ export default function Home() {
             <span className="text-zinc-700">Your connection is secure</span>
           </p>
 
-          <AnimatePresence>
-            {state == 0 && (
-              <motion.div
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: 1,
-                }}
-                exit={{
-                  opacity: 0,
-                }}
-                className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500"
-              >
-                <div className="p-6 lg:p-8">
-                  <div className="flex items-center text-sm font-jost">
-                    <span className="text-zinc-500 font-medium">
-                      Confess to
-                    </span>
+          {state == 0 && (
+            <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500 animate-fade-in-up">
+              <div className="p-6 lg:p-8">
+                <div className="flex items-center text-sm font-jost">
+                  <span className="text-zinc-500 font-medium">Confess to</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2.5"
+                    stroke="currentColor"
+                    class="w-4 h-4 text-zinc-500 ml-2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                    />
+                  </svg>
+
+                  <div className="flex items-center space-x-2 ml-4">
+                    <img
+                      src="https://www.priyangsu.dev/priyangsuThree.jpeg"
+                      className="h-7 w-7 rounded-full object-cover border border-black"
+                      alt=""
+                    />
+                    <a href="">@priyangsubanerjee</a>
+                  </div>
+                </div>
+                <textarea
+                  name=""
+                  className="font-jost resize-none outline-none w-full h-full mt-6"
+                  placeholder="Your confession goes here..."
+                  id=""
+                  rows="6"
+                ></textarea>
+              </div>
+              <div className="flex items-center justify-end px-6 py-6">
+                <button
+                  onClick={() => setState(1)}
+                  className="bg-zinc-800 px-8 py-2 font-jost text-white rounded-lg"
+                >
+                  Send
+                </button>
+              </div>
+            </div>
+          )}
+
+          {state == 1 && (
+            <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500 animate-fade-in-up">
+              <div className="p-6 lg:p-8">
+                <div className="font-jost">
+                  <p className="text-zinc-700 font-medium text-center flex items-center justify-center space-x-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
                       viewBox="0 0 24 24"
-                      stroke-width="2.5"
-                      stroke="currentColor"
-                      class="w-4 h-4 text-zinc-500 ml-2"
+                      fill="currentColor"
+                      class="w-6 h-6 text-teal-600"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                        fill-rule="evenodd"
+                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                        clip-rule="evenodd"
                       />
                     </svg>
+                    <span>Your confession has been sent to</span>
+                  </p>
 
-                    <div className="flex items-center space-x-2 ml-4">
-                      <img
-                        src="https://www.priyangsu.dev/priyangsuThree.jpeg"
-                        className="h-7 w-7 rounded-full object-cover border border-black"
-                        alt=""
-                      />
-                      <a href="">@priyangsubanerjee</a>
-                    </div>
-                  </div>
-                  <textarea
-                    name=""
-                    className="font-jost resize-none outline-none w-full h-full mt-6"
-                    placeholder="Your confession goes here..."
-                    id=""
-                    rows="6"
-                  ></textarea>
-                </div>
-                <div className="flex items-center justify-end px-6 py-6">
-                  <button
-                    onClick={() => setState(1)}
-                    className="bg-zinc-800 px-8 py-2 font-jost text-white rounded-lg"
-                  >
-                    Send
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          <AnimatePresence>
-            {state == 1 && (
-              <motion.div
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: 1,
-                }}
-                exit={{
-                  opacity: 0,
-                }}
-                className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500"
-              >
-                <div className="p-6 lg:p-8">
-                  <div className="font-jost">
-                    <p className="text-zinc-700 font-medium text-center flex items-center justify-center space-x-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        class="w-6 h-6 text-teal-600"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                      <span>Your confession has been sent to</span>
-                    </p>
-
-                    <div className="flex justify-center mt-8 items-center space-x-2 ml-4">
-                      <img
-                        src="https://www.priyangsu.dev/priyangsuThree.jpeg"
-                        className="h-7 w-7 rounded-full object-cover border border-black"
-                        alt=""
-                      />
-                      <a href="">@priyangsubanerjee</a>
-                    </div>
+                  <div className="flex justify-center mt-8 items-center space-x-2 ml-4">
+                    <img
+                      src="https://www.priyangsu.dev/priyangsuThree.jpeg"
+                      className="h-7 w-7 rounded-full object-cover border border-black"
+                      alt=""
+                    />
+                    <a href="">@priyangsubanerjee</a>
                   </div>
                 </div>
-                <div className="flex mt-6 items-center justify-center px-6 pb-10">
-                  <button
-                    onClick={() => {
-                      toast("Coming soon ... ");
-                    }}
-                    className="bg-zinc-200 px-8 py-2 font-jost text-zinc-800 rounded-full"
-                  >
-                    Create your confession page
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+              </div>
+              <div className="flex mt-6 items-center justify-center px-6 pb-10">
+                <button
+                  onClick={() => {
+                    toast("Coming soon ... ");
+                  }}
+                  className="bg-zinc-200 px-8 py-2 font-jost text-zinc-800 rounded-full"
+                >
+                  Create your confession page
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </main>
