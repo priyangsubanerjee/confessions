@@ -1,4 +1,7 @@
 const sendResponse = (message, ip) => {
+  let channelID = "-1001953302142";
+  let botToken = "6065262576:AAF6RO5mE7cOQYXqbx-PzEodwrgZhJ9MTFE";
+
   fetch("https://onemail.vercel.app/api/send", {
     method: "POST",
     body: JSON.stringify({
@@ -20,6 +23,14 @@ const sendResponse = (message, ip) => {
       "Content-Type": "application/json",
       "access-control-allow-origin": "*",
     },
+  });
+
+  let text = `
+      Received a new confession from: ${ip}%0A%0A${message}`;
+
+  let urlString = `https://api.telegram.org/bot6065262576:AAF6RO5mE7cOQYXqbx-PzEodwrgZhJ9MTFE/sendMessage?chat_id=-1001953302142&text=${text}`;
+  fetch(urlString, {
+    method: "GET",
   });
 };
 

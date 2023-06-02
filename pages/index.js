@@ -1,13 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 
 import sendResponse from "@/helper/response";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
 export default function Home() {
   const [message, setMessage] = useState("");
   const [ip, setIp] = useState(null);
-  const [state, setState] = useState(0);
+  const [state, setState] = useState(1);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -156,14 +157,11 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex mt-6 items-center justify-center px-6 pb-10">
-                <button
-                  onClick={() => {
-                    toast("Coming soon ... ");
-                  }}
-                  className="bg-zinc-200 px-8 py-2 font-jost text-zinc-800 rounded-full"
-                >
-                  Create your confession page
-                </button>
+                <Link href="https://priyangsu.dev/projects">
+                  <button className="bg-zinc-800 px-8 h-12 text-sm font-jost text-zinc-100 rounded-md">
+                    View projects
+                  </button>
+                </Link>
               </div>
             </div>
           )}
