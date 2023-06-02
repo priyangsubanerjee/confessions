@@ -12,17 +12,12 @@ export default function Home() {
   const [state, setState] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  const connect = async () => {
-    await fetch("/api/connect");
-  };
-
   useEffect(() => {
     fetch("/api/ip")
       .then((res) => res.json())
       .then((data) => {
         setIp(data.ip);
       });
-    connect();
   }, []);
 
   const handleSubmit = async () => {
