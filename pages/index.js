@@ -29,7 +29,7 @@ export default function Home() {
             <span className="text-zinc-700">Your connection is secure</span>
           </p>
 
-          <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl rounded-xl mt-12 lg:mt-16 overflow-hidden ">
+          <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500">
             <div className="p-6 lg:p-8">
               <div className="flex items-center text-sm font-jost">
                 <span className="text-zinc-500 font-medium">Confess to</span>
@@ -66,7 +66,7 @@ export default function Home() {
               ></textarea>
             </div>
             <div className="flex items-center justify-end px-6 pb-6">
-              <button className="bg-zinc-800 px-8 py-2 font-jost font-medium text-white rounded-full">
+              <button className="bg-zinc-800 text-sm px-8 py-2 font-jost text-white rounded-full">
                 Send
               </button>
             </div>
