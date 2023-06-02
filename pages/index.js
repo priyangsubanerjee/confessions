@@ -28,6 +28,49 @@ export default function Home() {
             </svg>
             <span className="text-zinc-700">Your connection is secure</span>
           </p>
+
+          <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl rounded-xl mt-12 lg:mt-16 overflow-hidden ">
+            <div className="p-6 lg:p-8">
+              <div className="flex items-center text-sm font-jost">
+                <span className="text-zinc-500 font-medium">Confess to</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2.5"
+                  stroke="currentColor"
+                  class="w-4 h-4 text-zinc-500 ml-2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                  />
+                </svg>
+
+                <div className="flex items-center space-x-2 ml-4">
+                  <img
+                    src="https://www.priyangsu.dev/priyangsuThree.jpeg"
+                    className="h-7 w-7 rounded-full object-cover border border-black"
+                    alt=""
+                  />
+                  <a href="">@priyangsubanerjee</a>
+                </div>
+              </div>
+              <textarea
+                name=""
+                className="font-jost resize-none outline-none w-full h-full mt-6"
+                placeholder="Your confession goes here..."
+                id=""
+                rows="6"
+              ></textarea>
+            </div>
+            <div className="flex items-center justify-end px-6 pb-6">
+              <button className="bg-zinc-800 px-8 py-2 font-jost font-medium text-white rounded-full">
+                Send
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </main>
