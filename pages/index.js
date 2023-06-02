@@ -66,7 +66,7 @@ export default function Home() {
               ></textarea>
             </div>
             <div className="flex items-center justify-end px-6 pb-6">
-              <button className="bg-zinc-800 text-sm px-8 py-2 font-jost text-white rounded-full">
+              <button className="bg-zinc-800 px-8 py-2 font-jost text-white rounded-full">
                 Send
               </button>
             </div>
