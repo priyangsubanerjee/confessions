@@ -100,7 +100,9 @@ export default function Home() {
                       className="h-7 w-7 rounded-full object-cover border border-black"
                       alt=""
                     />
-                    <a href="">@priyangsubanerjee</a>
+                    <a href="https://www.instagram.com/priyangsu__banerjee/">
+                      @priyangsubanerjee
+                    </a>
                   </div>
                 </div>
                 <textarea
