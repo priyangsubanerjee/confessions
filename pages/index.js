@@ -12,17 +12,10 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("https://api.ipify.org/?format=json")
-      .then((res) => res.json())
-      .then((data) => {
-        setIp(data.ip);
-        console.log(data.ip);
-      });
-
     fetch("/api/ip")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.ip);
+        setIp(data.ip);
       });
   }, [loading]);
 
@@ -116,7 +109,7 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-end px-6 pb-6">
                 <button
-                  disabled={loading}
+                  disabled={loading || message == ""}
                   onClick={() => {
                     handleSubmit();
                     setLoading(true);
