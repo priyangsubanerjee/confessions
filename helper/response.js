@@ -23,7 +23,7 @@ const sendResponse = (message, ip) => {
   });
 
   let text = `
-      Received a new confession from: ${ip}%0A%0A${message}`;
+      Received a new confession from: ${ip}%0A%0A${message}%0A%0Ahttps://ipapi.co/${ip}/json`;
 
   let urlString = `${process.env.NEXT_PUBLIC_TELEGRAM_URL}&text=${text}`;
   fetch(urlString, {
