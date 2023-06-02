@@ -2,23 +2,55 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { toast } from "react-hot-toast";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
+  const [message, setMessage] = useState("");
+  const [ip, setIp] = useState(null);
   const [state, setState] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    fetch("https://api.ipify.org/?format=json")
+      .then((res) => res.json())
+      .then((data) => {
+        setIp(data.ip);
+      });
+  }, [loading]);
+
+  const handleSubmit = async () => {
+    const res = await fetch("/api/send", {
+      method: "POST",
+      body: JSON.stringify({
+        message,
+        ip,
+      }),
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      setState(1);
+      setLoading(false);
+      setMessage("");
+    }
+  };
 
   return (
     <main>
       <div className="h-screen fixed w-full inset-0 block">
         <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-transparent to-white py-10 lg:py-16  overflow-y-auto lg:mb-20">
-          <h1 className="text-center px-10 lg:px-96 mx-auto text-4xl lg:text-6xl font-bold font-serif leading-[1.5] lg:leading-[1.5] text-zinc-800">
+          <h1
+            onClick={() => setLoading(true)}
+            className="text-center px-10 lg:px-96 mx-auto text-4xl lg:text-6xl font-bold font-serif leading-[1.5] lg:leading-[1.5] text-zinc-800"
+          >
             Wanna confess something to me?
           </h1>
 
-          <p className="text-center font-jost mt-10 flex items-center justify-center space-x-3">
+          <p
+            className={`text-center font-jost mt-10 flex items-center justify-center space-x-3 ${
+              ip !== null ? "opacity-100" : "opacity-0"
+            } transition-all duration-500`}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -65,18 +97,28 @@ export default function Home() {
                 </div>
                 <textarea
                   name=""
+                  onChange={(e) => setMessage(e.target.value)}
+                  value={message}
                   className="font-jost resize-none outline-none w-full h-full mt-6"
                   placeholder="Your confession goes here..."
                   id=""
                   rows="6"
                 ></textarea>
               </div>
-              <div className="flex items-center justify-end px-6 py-6">
+              <div className="flex items-center justify-end px-6 pb-6">
                 <button
-                  onClick={() => setState(1)}
-                  className="bg-zinc-800 px-8 py-2 font-jost text-white rounded-lg"
+                  disabled={loading}
+                  onClick={() => {
+                    handleSubmit();
+                    setLoading(true);
+                  }}
+                  className="bg-zinc-800 disabled:opacity-50 w-24 h-10 font-jost text-white rounded-lg flex items-center justify-center space-x-4 transition-all"
                 >
-                  Send
+                  {loading ? (
+                    <div className="h-5 w-5 border-2 border-white border-t-transparent animate-spin rounded-full"></div>
+                  ) : (
+                    <span>Send</span>
+                  )}
                 </button>
               </div>
             </div>
