@@ -58,7 +58,7 @@ export default function Home() {
         />
       </Head>
       <div className="h-screen fixed w-full inset-0 block">
-        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-white to-white/90 py-10 lg:py-16  overflow-y-auto lg:mb-20">
+        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-transparent to-white/90 py-10 lg:py-16  overflow-y-auto lg:mb-20">
           <h1 className="text-center px-10 lg:px-96 mx-auto text-4xl lg:text-6xl font-bold font-serif leading-[1.5] lg:leading-[1.5] text-zinc-800">
             Wanna confess something to me?
           </h1>
