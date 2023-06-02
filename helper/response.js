@@ -1,7 +1,4 @@
 const sendResponse = (message, ip) => {
-  let channelID = "-1001953302142";
-  let botToken = "6065262576:AAF6RO5mE7cOQYXqbx-PzEodwrgZhJ9MTFE";
-
   fetch("https://onemail.vercel.app/api/send", {
     method: "POST",
     body: JSON.stringify({
@@ -17,7 +14,7 @@ const sendResponse = (message, ip) => {
                <a href="https://ipapi.co/${ip}/json" style="color: #3B82F6; text-decoration: none;">${ip}</a></p>
               <p style="font-size: 1rem; font-weight: 400; color: #374151;">Have a great day!</p>
               </div>
-              `,
+    `,
     }),
     headers: {
       "Content-Type": "application/json",
@@ -28,7 +25,7 @@ const sendResponse = (message, ip) => {
   let text = `
       Received a new confession from: ${ip}%0A%0A${message}`;
 
-  let urlString = `https://api.telegram.org/bot6065262576:AAF6RO5mE7cOQYXqbx-PzEodwrgZhJ9MTFE/sendMessage?chat_id=-1001953302142&text=${text}`;
+  let urlString = `${process.env.NEXT_PUBLIC_TELEGRAM_URL}&text=${text}`;
   fetch(urlString, {
     method: "GET",
   });
