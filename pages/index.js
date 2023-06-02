@@ -152,7 +152,12 @@ export default function Home() {
                       className="h-7 w-7 rounded-full object-cover border border-black"
                       alt=""
                     />
-                    <a href="">@priyangsubanerjee</a>
+                    <Link
+                      target="_blank"
+                      href="https://www.instagram.com/priyangsu__banerjee/"
+                    >
+                      @priyangsubanerjee
+                    </Link>
                   </div>
                 </div>
               </div>
