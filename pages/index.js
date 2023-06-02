@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
+import connectDatabase from "@/db/connect";
 import sendResponse from "@/helper/response";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -11,13 +12,18 @@ export default function Home() {
   const [state, setState] = useState(0);
   const [loading, setLoading] = useState(false);
 
+  const connect = async () => {
+    await fetch("/api/connect");
+  };
+
   useEffect(() => {
     fetch("/api/ip")
       .then((res) => res.json())
       .then((data) => {
         setIp(data.ip);
       });
-  }, [loading]);
+    connect();
+  }, []);
 
   const handleSubmit = async () => {
     const res = await fetch("/api/send", {
