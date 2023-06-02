@@ -18,7 +18,7 @@ export default function Home() {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              class="w-4 h-4"
+              class="w-4 h-4 text-teal-700"
             >
               <path
                 fill-rule="evenodd"
@@ -26,7 +26,7 @@ export default function Home() {
                 clip-rule="evenodd"
               />
             </svg>
-            <span>Your connection is secure</span>
+            <span className="text-zinc-700">Your connection is secure</span>
           </p>
         </div>
       </div>
