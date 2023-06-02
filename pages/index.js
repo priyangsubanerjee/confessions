@@ -12,10 +12,17 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("/api/ip")
+    fetch("https://api.ipify.org/?format=json")
       .then((res) => res.json())
       .then((data) => {
         setIp(data.ip);
+        console.log(data.ip);
+      });
+
+    fetch("/api/ip")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.ip);
       });
   }, [loading]);
 
@@ -66,7 +73,6 @@ export default function Home() {
               />
             </svg>
             <span className="text-zinc-700">Your connection is secure</span>
-            {ip}
           </p>
 
           {state == 0 && (
