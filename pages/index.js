@@ -167,6 +167,18 @@ export default function Home() {
               </div>
             </div>
           )}
+
+          <div className="flex fixed bottom-6 inset-x-0 items-center justify-center mt-20 text-xs">
+            <p className="text-zinc-600">
+              made with &hearts; by{" "}
+              <a
+                href="https://www.priyangsu.dev"
+                className="text-zinc-900 font-medium hover:underline"
+              >
+                Priyangsu Banerjee
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </main>
