@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 
 import toast, { Toaster } from "react-hot-toast";
+
 export default function App({ Component, pageProps }) {
   return (
     <>
@@ -12,6 +13,8 @@ export default function App({ Component, pageProps }) {
             background: "#333",
             color: "#fff",
             borderRadius: "100px",
+            fontSize: "14px",
+            marginBottom: "1rem",
           },
         }}
       />

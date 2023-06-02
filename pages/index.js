@@ -1,14 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { toast } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [state, setState] = useState(0);
+  const [state, setState] = useState(null);
+
   return (
     <main>
       <div className="h-screen fixed w-full inset-0 block">
@@ -17,7 +18,10 @@ export default function Home() {
             Wanna confess something to me?
           </h1>
 
-          <p className="text-center font-jost mt-10 flex items-center justify-center space-x-3">
+          <p
+            onClick={() => setState(0)}
+            className="text-center font-jost mt-10 flex items-center justify-center space-x-3"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -35,7 +39,18 @@ export default function Home() {
 
           <AnimatePresence>
             {state == 0 && (
-              <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500">
+              <motion.div
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                }}
+                className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500"
+              >
                 <div className="p-6 lg:p-8">
                   <div className="flex items-center text-sm font-jost">
                     <span className="text-zinc-500 font-medium">
@@ -81,13 +96,24 @@ export default function Home() {
                     Send
                   </button>
                 </div>
-              </div>
+              </motion.div>
             )}
           </AnimatePresence>
 
           <AnimatePresence>
             {state == 1 && (
-              <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500">
+              <motion.div
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                }}
+                className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500"
+              >
                 <div className="p-6 lg:p-8">
                   <div className="font-jost">
                     <p className="text-zinc-700 font-medium text-center flex items-center justify-center space-x-2">
@@ -119,14 +145,14 @@ export default function Home() {
                 <div className="flex mt-6 items-center justify-center px-6 pb-10">
                   <button
                     onClick={() => {
-                      toast("Your confession has been sent");
+                      toast("Coming soon ... ");
                     }}
-                    className="bg-zinc-800 px-8 py-2 font-jost text-white rounded-full"
+                    className="bg-zinc-200 px-8 py-2 font-jost text-zinc-800 rounded-full"
                   >
                     Create your confession page
                   </button>
                 </div>
-              </div>
+              </motion.div>
             )}
           </AnimatePresence>
         </div>
