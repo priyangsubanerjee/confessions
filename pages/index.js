@@ -96,7 +96,7 @@ export default function Home() {
 
                   <div className="flex items-center space-x-2 ml-4">
                     <img
-                      src="https://www.priyangsu.dev/priyangsuThree.jpeg"
+                      src="/me.jpeg"
                       className="h-7 w-7 rounded-full object-cover border border-black"
                       alt=""
                     />
