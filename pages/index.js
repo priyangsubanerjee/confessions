@@ -35,16 +35,8 @@ export default function Home() {
 
           <AnimatePresence>
             {state == 0 && (
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 10,
-                }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500"
-              >
-                <div className="p-6 lg:p-8 border-b">
+              <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500">
+                <div className="p-6 lg:p-8">
                   <div className="flex items-center text-sm font-jost">
                     <span className="text-zinc-500 font-medium">
                       Confess to
@@ -81,7 +73,7 @@ export default function Home() {
                     rows="6"
                   ></textarea>
                 </div>
-                <div className="flex items-center justify-end px-2 py-2 bg-zinc-50">
+                <div className="flex items-center justify-end px-6 py-6">
                   <button
                     onClick={() => setState(1)}
                     className="bg-zinc-800 px-8 py-2 font-jost text-white rounded-lg"
@@ -89,21 +81,13 @@ export default function Home() {
                     Send
                   </button>
                 </div>
-              </motion.div>
+              </div>
             )}
           </AnimatePresence>
 
           <AnimatePresence>
             {state == 1 && (
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 10,
-                }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500"
-              >
+              <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500">
                 <div className="p-6 lg:p-8">
                   <div className="font-jost">
                     <p className="text-zinc-700 font-medium text-center flex items-center justify-center space-x-2">
@@ -142,7 +126,7 @@ export default function Home() {
                     Create your confession page
                   </button>
                 </div>
-              </motion.div>
+              </div>
             )}
           </AnimatePresence>
         </div>
