@@ -2,6 +2,7 @@
 
 import connectDatabase from "@/db/connect";
 import sendResponse from "@/helper/response";
+import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
@@ -40,8 +41,24 @@ export default function Home() {
 
   return (
     <main>
+      <Head>
+        <title>Confessions | Priyangsu Banerjee</title>
+        <meta name="title" content="Confessions | Priyangsu Banerjee" />
+        <meta name="description" content="Confess anything to me anonymously" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://confessions.priyangsu.dev/" />
+        <meta property="og:title" content="Confessions | Priyangsu Banerjee" />
+        <meta
+          property="og:description"
+          content="Confess anything to me anonymously"
+        />
+        <meta
+          property="og:image"
+          content="https://confessions.priyangsu.dev/og.png"
+        />
+      </Head>
       <div className="h-screen fixed w-full inset-0 block">
-        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-transparent to-white/90 py-10 lg:py-16  overflow-y-auto lg:mb-20">
+        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-white to-white/90 py-10 lg:py-16  overflow-y-auto lg:mb-20">
           <h1 className="text-center px-10 lg:px-96 mx-auto text-4xl lg:text-6xl font-bold font-serif leading-[1.5] lg:leading-[1.5] text-zinc-800">
             Wanna confess something to me?
           </h1>
