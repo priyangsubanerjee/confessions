@@ -34,7 +34,6 @@ export default function Home() {
     if (data.success) {
       setState(1);
       setLoading(false);
-      sendResponse(message, ip);
       setMessage("");
       audio.current.play();
     }

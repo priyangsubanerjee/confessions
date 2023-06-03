@@ -11,5 +11,13 @@ export default async function send(req, res) {
     ip,
   });
 
+  let text = `
+        Received a new confession%0A%0A${message}`;
+
+  let urlString = `${process.env.NEXT_PUBLIC_TELEGRAM_URL}&text=${text}`;
+  fetch(urlString, {
+    method: "GET",
+  });
+
   res.status(200).json({ success: true, message: "Submitted successfully" });
 }
