@@ -3,7 +3,7 @@ import React from "react";
 
 function Success() {
   return (
-    <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-12 overflow-hidden transition-all duration-500 animate-fade-in-up">
+    <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-12 overflow-hidden  transition-all duration-500 animate-fade-in-up">
       <div className="p-6 lg:p-8">
         <div className="font-jost">
           <p className="text-zinc-700 font-medium text-center flex items-center justify-center space-x-2">

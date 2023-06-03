@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function ConfessState({
   setMessage,
@@ -9,7 +10,12 @@ function ConfessState({
   setLoading,
 }) {
   return (
-    <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-12 overflow-hidden transition-all duration-500 animate-fade-in-up">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-12 overflow-hidden  transition-all duration-500 animate-fade-in-up"
+    >
       <div className="p-6 lg:p-8">
         <div className="flex items-center text-sm font-jost">
           <span className="text-zinc-500 font-medium">Confess to</span>
@@ -51,7 +57,6 @@ function ConfessState({
       </div>
       <div className="flex items-center justify-end px-6 pb-6">
         <button
-          disabled={loading || message == ""}
           onClick={() => {
             handleSubmit();
             setLoading(true);
@@ -69,7 +74,7 @@ function ConfessState({
           )}
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
