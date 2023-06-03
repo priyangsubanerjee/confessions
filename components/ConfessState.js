@@ -9,7 +9,7 @@ function ConfessState({
   setLoading,
 }) {
   return (
-    <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500 animate-fade-in-up">
+    <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-12 overflow-hidden transition-all duration-500 animate-fade-in-up">
       <div className="p-6 lg:p-8">
         <div className="flex items-center text-sm font-jost">
           <span className="text-zinc-500 font-medium">Confess to</span>

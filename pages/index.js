@@ -1,13 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 
 import ConfessState from "@/components/ConfessState";
+import { useEffect, useState, useRef } from "react";
 import Success from "@/components/Success";
-import connectDatabase from "@/db/connect";
 import sendResponse from "@/helper/response";
 import Head from "next/head";
-import Link from "next/link";
-import { useEffect, useState, useRef } from "react";
-import { toast } from "react-hot-toast";
 
 export default function Home() {
   const [message, setMessage] = useState("");
