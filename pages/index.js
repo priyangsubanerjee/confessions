@@ -1,10 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 
+import ConfessState from "@/components/ConfessState";
+import Success from "@/components/Success";
 import connectDatabase from "@/db/connect";
 import sendResponse from "@/helper/response";
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 
 export default function Home() {
@@ -12,6 +14,7 @@ export default function Home() {
   const [ip, setIp] = useState(null);
   const [state, setState] = useState(0);
   const [loading, setLoading] = useState(false);
+  const audio = useRef(null);
 
   useEffect(() => {
     fetch("/api/ip")
@@ -36,6 +39,7 @@ export default function Home() {
       setLoading(false);
       sendResponse(message, ip);
       setMessage("");
+      audio.current.play();
     }
   };
 
@@ -83,109 +87,12 @@ export default function Home() {
             <span className="text-zinc-700">Your connection is secure</span>
           </p>
 
-          {state == 0 && (
-            <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500 animate-fade-in-up">
-              <div className="p-6 lg:p-8">
-                <div className="flex items-center text-sm font-jost">
-                  <span className="text-zinc-500 font-medium">Confess to</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="2.5"
-                    stroke="currentColor"
-                    class="w-4 h-4 text-zinc-500 ml-2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                    />
-                  </svg>
-
-                  <div className="flex items-center space-x-2 ml-4">
-                    <img
-                      src="/me.jpeg"
-                      className="h-7 w-7 rounded-full object-cover border border-black"
-                      alt=""
-                    />
-                    <a href="https://www.instagram.com/priyangsu__banerjee/">
-                      @priyangsubanerjee
-                    </a>
-                  </div>
-                </div>
-                <textarea
-                  name=""
-                  onChange={(e) => setMessage(e.target.value)}
-                  value={message}
-                  className="font-jost resize-none outline-none w-full h-full mt-6"
-                  placeholder="Your confession goes here..."
-                  id=""
-                  rows="6"
-                ></textarea>
-              </div>
-              <div className="flex items-center justify-end px-6 pb-6">
-                <button
-                  disabled={loading || message == ""}
-                  onClick={() => {
-                    handleSubmit();
-                    setLoading(true);
-                  }}
-                  className="bg-zinc-800 disabled:opacity-50 w-24 h-10 font-jost text-white rounded-lg flex items-center justify-center space-x-4 transition-all"
-                >
-                  {loading ? (
-                    <div className="h-5 w-5 border-2 border-white border-t-transparent animate-spin rounded-full"></div>
-                  ) : (
-                    <span>Send</span>
-                  )}
-                </button>
-              </div>
-            </div>
-          )}
-
-          {state == 1 && (
-            <div className="w-[90%] flex flex-col mx-auto lg:w-[620px] bg-white border shadow-lg lg:shadow-xl focus-within:lg:shadow-2xl rounded-xl mt-12 lg:mt-16 overflow-hidden transition-all duration-500 animate-fade-in-up">
-              <div className="p-6 lg:p-8">
-                <div className="font-jost">
-                  <p className="text-zinc-700 font-medium text-center flex items-center justify-center space-x-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      class="w-6 h-6 text-teal-600"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <span>Your confession has been sent to</span>
-                  </p>
-
-                  <div className="flex justify-center mt-8 items-center space-x-2 ml-4">
-                    <img
-                      src="/me.jpeg"
-                      className="h-7 w-7 rounded-full object-cover border border-black"
-                      alt=""
-                    />
-                    <Link
-                      target="_blank"
-                      href="https://www.instagram.com/priyangsu__banerjee/"
-                    >
-                      @priyangsubanerjee
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <div className="flex mt-6 items-center justify-center px-6 pb-10">
-                <Link href="https://priyangsu.dev/projects">
-                  <button className="bg-zinc-800 px-8 h-12 text-sm font-jost text-zinc-100 rounded-md">
-                    View projects
-                  </button>
-                </Link>
-              </div>
-            </div>
+          {state == 0 ? (
+            <ConfessState
+              {...{ setMessage, message, handleSubmit, loading, setLoading }}
+            />
+          ) : (
+            <Success />
           )}
 
           <div className="flex fixed bottom-6 inset-x-0 items-center justify-center mt-20 text-xs">
@@ -201,6 +108,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <audio ref={audio} id="audio" src="/audio.mp3"></audio>
     </main>
   );
 }
