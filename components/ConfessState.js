@@ -49,7 +49,7 @@ function ConfessState({
           name=""
           onChange={(e) => setMessage(e.target.value)}
           value={message}
-          className="font-jost resize-none outline-none w-full h-full mt-6"
+          className="font-jost resize-none outline-none w-full h-full mt-6 bg-transparent"
           placeholder="Your confession goes here..."
           id=""
           rows="6"
