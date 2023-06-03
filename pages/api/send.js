@@ -14,8 +14,8 @@ export default async function send(req, res) {
   let text = `
         Received a new confession%0A%0A${message}`;
 
-  let urlString = `${process.env.NEXT_PUBLIC_TELEGRAM_URL}&text=${text}`;
-  fetch(urlString, {
+  let urlString = `${process.env.TELEGRAM_URL}&text=${text}`;
+  await fetch(urlString, {
     method: "GET",
   });
 
