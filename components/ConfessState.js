@@ -57,6 +57,7 @@ function ConfessState({
       </div>
       <div className="flex items-center justify-end px-6 pb-6">
         <button
+          disabled={loading || message.length < 1}
           onClick={() => {
             handleSubmit();
             setLoading(true);
