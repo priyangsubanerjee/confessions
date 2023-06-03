@@ -37,12 +37,24 @@ function Success() {
           </div>
         </div>
       </div>
-      <div className="flex mt-6 items-center justify-center px-6 pb-10">
-        <Link href="https://priyangsu.dev/projects">
-          <button className="bg-zinc-800 px-8 h-12 text-sm font-jost text-zinc-100 rounded-md">
-            View projects
-          </button>
+      <div className="flex mt-6 items-center justify-center space-x-4 text-zinc-700 px-6">
+        <Link href={"https://www.instagram.com/priyangsu__banerjee/"}>
+          <iconify-icon width="24" icon="ri:instagram-fill"></iconify-icon>
         </Link>
+        <Link href={"https://github.com/priyangsubanerjee"}>
+          <iconify-icon icon="mdi:github" width="24"></iconify-icon>
+        </Link>
+        <Link href={"https://priyangsu.dev/"}>
+          <iconify-icon icon="mdi:web" width="24"></iconify-icon>
+        </Link>
+      </div>
+      <div className="flex mt-4 items-center justify-center space-x-4 text-zinc-700 px-6 pb-10">
+        <a
+          className="text-xs text-zinc-900"
+          href="mailto:devpriyangsu@gmail.com"
+        >
+          devpriyangsu@gmail.com
+        </a>
       </div>
     </div>
   );

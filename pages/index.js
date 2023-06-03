@@ -9,7 +9,7 @@ import Head from "next/head";
 export default function Home() {
   const [message, setMessage] = useState("");
   const [ip, setIp] = useState(null);
-  const [state, setState] = useState(0);
+  const [state, setState] = useState(1);
   const [loading, setLoading] = useState(false);
   const audio = useRef(null);
 
