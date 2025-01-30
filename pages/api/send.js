@@ -12,7 +12,7 @@ export default async function send(req, res) {
   //});
 
   let text = `
-        Received a new confession%0A%0A${message}0A%0A${ip}`;
+        Received a new confession%0A%0A${message}%0A%0A${ip}`;
 
   let urlString = `${process.env.TELEGRAM_URL}&text=${text}`;
   await fetch(urlString, {
