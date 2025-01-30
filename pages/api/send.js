@@ -2,14 +2,14 @@ import confession from "@/db/confession";
 import connectDatabase from "@/db/connect";
 
 export default async function send(req, res) {
-  await connectDatabase();
+  //await connectDatabase();
   const body = JSON.parse(req.body);
   const { message, ip } = body;
 
-  await confession.create({
-    message,
-    ip,
-  });
+  //await confession.create({
+  //  message,
+  //  ip,
+  //});
 
   let text = `
         Received a new confession%0A%0A${message}`;
